@@ -1,0 +1,10 @@
+# Runtime dependencies for the Vercel Python serverless function (api/index.py).
+# Deliberately lean: no scikit-learn/scipy (PCA is done with NumPy's SVD), no
+# uvicorn (Vercel provides the ASGI server), and no pytest.
+# Keeping this small keeps the serverless bundle well under Vercel's limit and
+# the cold start fast.
+fastapi
+pydantic
+pandas
+numpy
+yfinance

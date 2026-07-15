@@ -1,0 +1,12 @@
+# Engine + data
+yfinance
+pandas
+numpy
+
+# API
+fastapi
+uvicorn[standard]
+pydantic
+
+# Tests
+pytest

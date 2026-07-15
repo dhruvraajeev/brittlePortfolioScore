@@ -1,0 +1,11 @@
+# Keep the deployment upload small and clean.
+../.venv/
+../__pycache__/
+../*.pyc
+../.pytest_cache/
+../node_modules/
+../frontend/node_modules/
+../frontend/dist/
+../backend/tests/
+../backend/conftest.py
+../.DS_Store

@@ -1,0 +1,93 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  background: radial-gradient(
+      1200px 700px at 78% -12%,
+      #16233f 0%,
+      rgba(11, 18, 32, 0) 55%
+    ),
+    radial-gradient(900px 600px at 8% 8%, #0e1b33 0%, rgba(7, 11, 22, 0) 50%),
+    #070b16;
+  background-attachment: fixed;
+  color: #e8eef8;
+  font-family: theme("fontFamily.rounded");
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Frosted-glass card surface used throughout */
+@layer components {
+  .card {
+    @apply rounded-3xl border border-white/10 bg-white/[0.03] p-5 backdrop-blur-xl;
+    box-shadow: theme("boxShadow.card");
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  .card:hover {
+    @apply border-white/[0.14];
+  }
+  .chip {
+    @apply rounded-full border px-3 py-1 text-xs font-semibold tracking-wide;
+  }
+  .label {
+    @apply text-[11px] font-semibold uppercase tracking-[0.16em] text-white/45;
+  }
+}
+
+/* A tidy, on-brand range slider */
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 6px;
+  border-radius: 999px;
+  background: linear-gradient(
+    to right,
+    #5cb8ff var(--pct, 50%),
+    rgba(255, 255, 255, 0.1) var(--pct, 50%)
+  );
+  outline: none;
+  cursor: pointer;
+}
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #eaf5ff;
+  border: 3px solid #38a5ff;
+  box-shadow: 0 0 14px -2px rgba(92, 184, 255, 0.9);
+  transition: transform 0.12s ease;
+}
+input[type="range"]::-webkit-slider-thumb:active {
+  transform: scale(1.25);
+}
+input[type="range"]::-moz-range-thumb {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #eaf5ff;
+  border: 3px solid #38a5ff;
+}
+
+/* Thin custom scrollbars */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 999px;
+}
