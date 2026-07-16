@@ -1,6 +1,6 @@
 # Brittle
 
-A playground or sandbox for a given stock portfolio, displaying a hidden fragility metric. Add some tickers, drag the weight sliders, and watch a single 0-100 **Fragility Score** as a way to build stock diversity intuition, in finding the one holding that would hold you most.
+A playground or sandbox for a given stock portfolio, displaying a hidden fragility metric. Add some tickers, drag the weight sliders, and watch a single 0-100 **Fragility Score** as a way to build stock diversity intuition, in finding the one holding that would affect you most.
 
 ## What it does
 
