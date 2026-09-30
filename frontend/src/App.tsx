@@ -1,9 +1,8 @@
 import { useEffect, useRef, useState } from "react";
-import { motion } from "framer-motion";
+import { MotionConfig } from "framer-motion";
 import { analyze } from "./lib/api";
 import type { Analysis, AnalyzeRequest } from "./lib/api";
 import { pct } from "./lib/format";
-import ParticleField from "./components/ParticleField";
 import Gauge from "./components/Gauge";
 import SpofCard from "./components/SpofCard";
 import SubScoreRadar from "./components/SubScoreRadar";
@@ -87,28 +86,21 @@ export default function App() {
   };
 
   return (
+    <MotionConfig reducedMotion="always">
     <div className="min-h-full">
-      <ParticleField />
 
       <div className="mx-auto max-w-5xl px-5 py-10 sm:px-8">
         {/* Header */}
         <header className="mb-9">
-          <motion.div
-            initial={{ opacity: 0, y: -8 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="flex items-center gap-2 text-sky-300"
-          >
-            <span className="h-2 w-2 animate-floaty rounded-full bg-sky-400 shadow-glow" />
+          <div className="flex items-center gap-2 text-sky-300">
+            <span className="h-2 w-2 rounded-full bg-sky-400" />
             <span className="label text-sky-300/80">Brittle</span>
-          </motion.div>
-          <motion.h1
-            initial={{ opacity: 0, y: 8 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.05 }}
+          </div>
+          <h1
             className="mt-3 max-w-2xl text-3xl font-extrabold leading-tight tracking-tight sm:text-[38px]"
           >
             Which single holding, if it crashed tomorrow, would hurt you most?
-          </motion.h1>
+          </h1>
           <p className="mt-3 max-w-xl text-sm text-white/50">
             Apply any ticker's weight and watch your score shift. The math looks past ticker
             labels to the risk you can't see. A higher score indicates a more fragile portfolio.
@@ -168,6 +160,7 @@ export default function App() {
         </footer>
       </div>
     </div>
+    </MotionConfig>
   );
 }
 

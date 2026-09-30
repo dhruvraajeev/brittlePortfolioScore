@@ -45,7 +45,7 @@ export default function PortfolioPanel({
         <div className="label">Your portfolio</div>
         {loading && (
           <span className="flex items-center gap-1.5 text-xs text-sky-300">
-            <span className="h-1.5 w-1.5 animate-ping rounded-full bg-sky-400" />
+            <span className="h-1.5 w-1.5 rounded-full bg-sky-400" />
             recomputing
           </span>
         )}

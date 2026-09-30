@@ -39,7 +39,7 @@ export default function BranchBars({ analysis }: { analysis: Analysis }) {
                   className="h-full rounded-full"
                   style={{
                     background:
-                      "linear-gradient(90deg, #38a5ff 0%, #8fd0ff 100%)",
+                      "#38a5ff",
                   }}
                   initial={{ width: 0 }}
                   animate={{ width: `${Math.min(100, val)}%` }}

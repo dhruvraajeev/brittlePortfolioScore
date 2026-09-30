@@ -7,7 +7,7 @@ import type { Analysis } from "../lib/api";
  */
 export default function NarrativeCard({ analysis }: { analysis: Analysis }) {
   return (
-    <div className="card bg-gradient-to-br from-sky-500/[0.06] to-transparent">
+    <div className="card border-l-2 border-l-sky-500/60">
       <div className="label text-sky-300/70">Overview</div>
 
       <motion.p
