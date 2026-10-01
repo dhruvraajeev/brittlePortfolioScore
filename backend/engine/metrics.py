@@ -179,27 +179,22 @@ def effective_n(weights: dict[str, float]) -> float:
 
 def concentration_score(weights: dict[str, float]) -> float:
     """
-    Map "effective number of holdings" onto a 0-100 fragility score by
-    comparing it to the *actual* number of holdings you own.
+    Map HHI onto a 0-100 fragility score on an *absolute* scale: how many
+    real bets your split behaves like, regardless of how many tickers
+    are on the screen.
 
-    Judgment call: fragility here is about the *gap* between how many
-    tickers you hold and how many real bets that split behaves like —
-    effective_n / n == 1.0 means your weights are perfectly even (as
-    un-concentrated as that many holdings can be) -> score 0. As
-    effective_n falls toward 1 (all the money effectively riding on one
-    name, regardless of how many tickers are on the screen) -> score
-    approaches 100. A single-holding portfolio is the degenerate case:
-    effective_n == n == 1, ratio == 1.0, so it correctly scores 0 for
-    concentration specifically — its fragility shows up in the other
-    four sub-scores instead (no diversification benefit anywhere), not
-    here.
+    Judgment call: DIVERSIFIED_N (10) even-sized bets or more counts as
+    "not concentrated" -> 0, and everything in one name (HHI == 1) -> 100,
+    linear in HHI between the two. So 100% in one stock scores 100, two
+    even holdings ~44, five even ~11, and 90/10 across 2 tickers scores
+    the same ~80 as 90% plus nine 1.1% crumbs, since both are one bet.
+    (The old effective_n / n ratio scored a single holding 0 and only
+    measured unevenness relative to the ticker count.)
     """
-    n = len(weights)
-    if n == 0:
-        raise ValueError("concentration_score needs at least one holding")
+    DIVERSIFIED_N = 10  # this many even bets (HHI = 0.1) maps to a score of 0
 
-    ratio = effective_n(weights) / n  # 1.0 = perfectly even, ->0 = one name dominates
-    return float((1.0 - ratio) * 100)
+    floor = 1.0 / DIVERSIFIED_N
+    return cap_and_scale(herfindahl_index(weights) - floor, 1.0 - floor)
 
 
 # ---------------------------------------------------------------------------

@@ -82,8 +82,14 @@ def test_concentration_score():
     assert effective_n(even) == pytest.approx(10.0, abs=1e-6)
     assert concentration_score(even) == pytest.approx(0.0, abs=1e-6)
 
+    # Absolute, not relative to ticker count: one bet scores the same
+    # however many crumbs surround it, and a single holding is maxed out.
     lopsided = normalize_weights({"BIG": 90, **{t: 10 / 9 for t in "BCDEFGHIJ"}})
-    assert concentration_score(lopsided) > 80
+    two = normalize_weights({"BIG": 90, "B": 10})
+    assert concentration_score(lopsided) > 75
+    assert concentration_score(lopsided) == pytest.approx(concentration_score(two), abs=3)
+    assert concentration_score({"ONLY": 1.0}) == pytest.approx(100.0)
+    assert concentration_score(normalize_weights({"A": 1, "B": 1})) < concentration_score(two)
 
 
 def test_pca_and_hidden_factor():

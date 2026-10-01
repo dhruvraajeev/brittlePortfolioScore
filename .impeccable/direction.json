@@ -1,0 +1,101 @@
+{
+  "title": "Choose Brittle's visual world",
+  "question": "The roll assigned the Bench Instrument. Keep it, take an alternate, or re-roll.",
+  "options": [
+    {
+      "id": "assigned",
+      "label": "Bench Instrument",
+      "kicker": "THE ROLL",
+      "lineage": "precision lab meters and channel-strip consoles",
+      "thesis": "Brittle as one calibrated measuring instrument: a scale, a readout, a row of channel faders.",
+      "palette": ["#0d0b11", "#16131c", "#2a2433", "#ebe7f2", "#b8a4ff"],
+      "materials": ["anodized dark faceplate", "engraved hairline scale", "violet indicator ink"],
+      "viewport": "A wide calibrated 0–100 scale across the top with the score as a damped indicator and the SPOF readout beside it; holdings below as channel faders, figures beneath.",
+      "risk": "Can read as a hardware skeuomorph if the faceplate gets textures or bevels; it must stay flat and typographic.",
+      "raised": [
+        {"from": "Emission-line rail", "raise": "The scale is one calibrated rail: every holding sits on it as a hairline at its factor exposure, the SPOF line doubled, state carried by line form not hue."},
+        {"from": "Jet-age ticket wallet", "raise": "Every number sits in a fixed ruled field so values change in place with zero layout shift."},
+        {"from": "Saville catalog sleeve", "raise": "Nothing is labelled twice; one figure owns the first viewport and the rest is quiet black."},
+        {"from": "Streaming title wall", "raise": "Hovering or focusing a holding dims every other holding across all figures at once."}
+      ]
+    },
+    {
+      "id": "model-pick",
+      "label": "Research Tear Sheet",
+      "kicker": "IMPECCABLE’S PICK",
+      "lineage": "quant research tear sheets (pyfolio, risk reports)",
+      "thesis": "The portfolio printed as a live research report: numbered figures, a stats table, one reading column.",
+      "palette": ["#0e0d12", "#ece9f1", "#8f87a0", "#a996ff"],
+      "materials": ["ruled report tables", "numbered figure captions", "tabular figures"],
+      "viewport": "Report header with score and SPOF as Fig. 1, holdings as an editable table, figures flowing below.",
+      "risk": "Familiar: close to where most quant-tool runs land; risks feeling like a static document rather than a toy."
+    },
+    {
+      "id": "challenger-rail",
+      "label": "Emission-Line Rail",
+      "verdict": "competitive",
+      "lineage": "spectrogram plates",
+      "thesis": "Every quantity is a needle-thin line on one off-centre calibrated rail.",
+      "palette": ["#141317", "#d9d4cc", "#b8a4ff", "#ffd36b"],
+      "materials": ["charcoal continuum", "hairline emission lines"],
+      "viewport": "One rail; holdings as lines at their exposure, the SPOF doubled and brightest.",
+      "case": "Holds product clarity (exposure as position is honest) but loses audience identification: spectroscopy isn't the recruiter's world.",
+      "risk": "Too austere for a first-minute visitor; numbers become hard to read.",
+      "hero": "https://impeccable.style/worlds/cards/operate-c-emission-line-rail-hero.webp"
+    },
+    {
+      "id": "challenger-ticket",
+      "label": "Jet-age Ticket Wallet",
+      "verdict": "declined",
+      "lineage": "airline coupon books",
+      "thesis": "Each holding a carbon coupon in a wallet.",
+      "palette": ["#1b2a52", "#c8322b", "#f6f3ea"],
+      "materials": ["coupon stock", "carbon numerals"],
+      "viewport": "Coupon book of holdings.",
+      "case": "Loses both axes: travel ephemera says nothing about correlated risk.",
+      "kept": "Fixed ruled fields for every number.",
+      "risk": "Costume.",
+      "hero": "https://impeccable.style/worlds/cards/vernacular-ephemera-jet-age-ticket-wallet-hero.webp"
+    },
+    {
+      "id": "challenger-saville",
+      "label": "Factory Catalog Sleeve",
+      "verdict": "declined",
+      "lineage": "Saville / Factory Records",
+      "thesis": "A pulsar plot on matte black.",
+      "palette": ["#0a0a0a", "#ffffff"],
+      "materials": ["matte black", "white hairline plot"],
+      "viewport": "One plot owning the field.",
+      "case": "Loses both: coded labels fight 'easy to use'.",
+      "kept": "One figure owns the viewport; nothing labelled twice.",
+      "risk": "Illegible by design.",
+      "hero": "https://impeccable.style/worlds/cards/brand-identity-canon-saville-catalog-sleeve-hero.webp"
+    },
+    {
+      "id": "challenger-wall",
+      "label": "Streaming Title Wall",
+      "verdict": "declined",
+      "lineage": "streaming catalog rows",
+      "thesis": "Holdings as poster tiles.",
+      "palette": ["#111", "#e50914"],
+      "materials": ["poster tiles"],
+      "viewport": "Rows of tiles.",
+      "case": "Loses both: no artwork exists and tiles hide the math.",
+      "kept": "Focus on one item dims everything else.",
+      "risk": "Entertainment register.",
+      "hero": "https://impeccable.style/worlds/cards/pop-culture-shelf-streaming-title-card-wall-hero.webp"
+    }
+  ],
+  "reroll": {"registers": ["safer", "bolder"]},
+  "buildPath": {"value": "code", "toggle": false},
+  "canon": true,
+  "canonCard": {
+    "label": "The category standard",
+    "thesis": "A dark fintech dashboard: card grid, big gauge, charts, executed cleanly.",
+    "palette": ["#0b0b10", "#1a1a22", "#8b7cf6"],
+    "materials": ["rounded cards", "radial gauge", "chart widgets"],
+    "viewport": "Header, controls column left, card grid of results right.",
+    "risk": "Indistinguishable from every portfolio dashboard by design."
+  },
+  "steer": true
+}
