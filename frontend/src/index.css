@@ -4,6 +4,20 @@
 
 :root {
   color-scheme: dark;
+  --bg: #0b0a0f;
+  --panel: #111017;
+  --raised: #18161f;
+  --line: rgba(178, 164, 255, 0.08);
+  --line-strong: rgba(178, 164, 255, 0.16);
+  --fg: #ecebf3;
+  --fg-2: #aaa6b9;
+  --fg-3: #847f97;
+  --accent: #a594ff;
+  --accent-soft: rgba(165, 148, 255, 0.14);
+  --ok: #6fd0a6;
+  --warn: #e3bd6d;
+  --bad: #f0808f;
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 html,
@@ -14,63 +28,114 @@ body,
 
 body {
   margin: 0;
-  background: #0a0a0c;
-  color: #e8eef8;
-  font-family: theme("fontFamily.rounded");
+  background: var(--bg);
+  color: var(--fg);
+  font-family: theme("fontFamily.sans");
+  font-size: 14px;
+  line-height: 1.5;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
 
-/* Frosted-glass card surface used throughout */
+::selection {
+  background: rgba(165, 148, 255, 0.32);
+  color: #fff;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+input {
+  caret-color: var(--accent);
+}
+
 @layer components {
-  .card {
-    @apply rounded-2xl border border-white/[0.07] bg-white/[0.02] p-5;
+  .panel {
+    @apply rounded-panel border border-line bg-panel;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.035);
   }
-  .chip {
-    @apply rounded-full border px-3 py-1 text-xs font-semibold tracking-wide;
+  .panel-head {
+    @apply flex items-baseline justify-between gap-3 border-b border-line px-5 py-3.5;
   }
-  .label {
-    @apply text-[11px] font-semibold uppercase tracking-[0.16em] text-white/45;
+  .panel-title {
+    @apply text-[13px] font-medium text-fg;
+  }
+  .meta {
+    @apply text-xs text-fg3;
+  }
+  .num {
+    font-variant-numeric: tabular-nums;
+  }
+  .ticker {
+    @apply font-mono tracking-[-0.01em];
   }
 }
 
-/* A tidy, on-brand range slider */
+/* Fader: thin track filled to the holding's share, a small flat thumb. */
 input[type="range"] {
   -webkit-appearance: none;
   appearance: none;
-  height: 6px;
+  height: 20px;
+  background: transparent;
+  cursor: pointer;
+}
+input[type="range"]::-webkit-slider-runnable-track {
+  height: 4px;
   border-radius: 999px;
   background: linear-gradient(
     to right,
-    #5cb8ff var(--pct, 50%),
-    rgba(255, 255, 255, 0.1) var(--pct, 50%)
+    var(--accent) var(--fill, 50%),
+    rgba(178, 164, 255, 0.12) var(--fill, 50%)
   );
-  outline: none;
-  cursor: pointer;
+}
+input[type="range"]::-moz-range-track {
+  height: 4px;
+  border-radius: 999px;
+  background: rgba(178, 164, 255, 0.12);
+}
+input[type="range"]::-moz-range-progress {
+  height: 4px;
+  border-radius: 999px;
+  background: var(--accent);
 }
 input[type="range"]::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
-  width: 18px;
-  height: 18px;
+  margin-top: -5px;
+  width: 14px;
+  height: 14px;
   border-radius: 50%;
-  background: #eaf5ff;
-  border: 3px solid #38a5ff;
+  background: var(--fg);
+  border: 0;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+  transition: transform 160ms var(--ease-out);
 }
 input[type="range"]::-moz-range-thumb {
-  width: 18px;
-  height: 18px;
+  width: 14px;
+  height: 14px;
   border-radius: 50%;
-  background: #eaf5ff;
-  border: 3px solid #38a5ff;
+  background: var(--fg);
+  border: 0;
+}
+input[type="range"]:hover::-webkit-slider-thumb {
+  transform: scale(1.12);
+}
+input[type="range"]:focus-visible {
+  outline-offset: 0;
 }
 
-/* Thin custom scrollbars */
 ::-webkit-scrollbar {
   width: 10px;
   height: 10px;
 }
+::-webkit-scrollbar-track {
+  background: transparent;
+}
 ::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.12);
+  background: rgba(178, 164, 255, 0.14);
+  border: 3px solid var(--bg);
   border-radius: 999px;
 }

@@ -1,10 +1,10 @@
 import type { Verdict } from "./api";
 
-/** Verdict → the light-blue-adjacent accent color for that band. */
+/** Verdict → its muted band color (CSS variable). */
 export const verdictColor: Record<Verdict, string> = {
-  resilient: "#4fe0b0",
-  moderate: "#ffcf7a",
-  fragile: "#ff7a90",
+  resilient: "var(--ok)",
+  moderate: "var(--warn)",
+  fragile: "var(--bad)",
 };
 
 export const verdictLabel: Record<Verdict, string> = {
@@ -25,13 +25,16 @@ export const metricLabel: Record<string, string> = {
   concentration: "Concentration",
   drawdown: "Drawdown",
   volatility: "Volatility",
-  cvar: "Tail risk",
+  cvar: "Tail loss",
 };
 
-/** Normalize a weights map to percentages that sum to 100. */
+/** Normalize a weights map to shares that sum to 1. */
 export function normalizedWeights(weights: Record<string, number>): Record<string, number> {
   const total = Object.values(weights).reduce((a, b) => a + b, 0) || 1;
   const out: Record<string, number> = {};
   for (const [k, v] of Object.entries(weights)) out[k] = v / total;
   return out;
 }
+
+/** Shared easing for every authored transition. */
+export const EASE = [0.16, 1, 0.3, 1] as const;

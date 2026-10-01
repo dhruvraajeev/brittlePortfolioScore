@@ -4,28 +4,25 @@ export default {
   theme: {
     extend: {
       colors: {
-        ink: {
-          900: "#070b16",
-        },
-        sky: {
-          300: "#8fd0ff",
-          400: "#5cb8ff",
-          500: "#38a5ff",
-        },
-        fragile: "#ff7a90",
+        bg: "var(--bg)",
+        panel: "var(--panel)",
+        raised: "var(--raised)",
+        line: "var(--line)",
+        line2: "var(--line-strong)",
+        fg: "var(--fg)",
+        fg2: "var(--fg-2)",
+        fg3: "var(--fg-3)",
+        accent: "var(--accent)",
+        ok: "var(--ok)",
+        warn: "var(--warn)",
+        bad: "var(--bad)",
       },
       fontFamily: {
-        // Rounded, friendly — falls back through platform rounded faces
-        // then a clean sans, no web-font fetch required.
-        rounded: [
-          "ui-rounded",
-          '"SF Pro Rounded"',
-          '"Hiragino Maru Gothic ProN"',
-          '"Quicksand"',
-          '"Varela Round"',
-          "system-ui",
-          "sans-serif",
-        ],
+        sans: ['"Geist"', "system-ui", "sans-serif"],
+        mono: ['"Geist Mono"', "ui-monospace", "monospace"],
+      },
+      borderRadius: {
+        panel: "10px",
       },
     },
   },
